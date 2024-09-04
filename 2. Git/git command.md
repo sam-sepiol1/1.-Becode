@@ -3,8 +3,8 @@
 
 ## Basics 
 
-[Comment fonctionne GitHub ?](https://guides.github.com/introduction/git-handbook)
-[Lien Mozzilla](https://developer.mozilla.org/fr/docs/Learn/Tools_and_testing/GitHub)
+[Comment fonctionne GitHub ?](https://guides.github.com/introduction/git-handbook)  
+[Lien Mozzilla](https://developer.mozilla.org/fr/docs/Learn/Tools_and_testing/GitHub)  
 
 
     
@@ -28,8 +28,8 @@
     
 
 
-[Git Cheatsheet](https://education.github.com/git-cheat-sheet-education.pdf)
-[Infos et exemples](https://docs.github.com/en/get-started/using-git/about-git)
+[Git Cheatsheet](https://education.github.com/git-cheat-sheet-education.pdf)  
+[Infos et exemples](https://docs.github.com/en/get-started/using-git/about-git)  
 
 
 ## Branching 
