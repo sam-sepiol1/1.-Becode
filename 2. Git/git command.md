@@ -40,7 +40,19 @@ Branchin allows to work on features without touching the working code.
 
 `git reset` cancel change by moving HEAD and thus, deleting the commits ( only works on local )
 
-`git revert` 
+`git revert` will come back to another version. Remote commits will not be deleted. Locals will be. 
+
+
+## Cherry pick 
+
+`git cherry-pick <Commit1> <Commit2> <...>` copy a series of commits to your branch
+
+`git rebase -i` will copy and change the order of the commits
+
+## Tags 
+
+`git tag tagname commit` will tag the commit.
+
 
 
 
