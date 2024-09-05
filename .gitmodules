@@ -16,3 +16,6 @@
 [submodule "3. Javascript/03/03-02-data-types-undefined-sam-sepiol1"]
 	path = 3. Javascript/03/03-02-data-types-undefined-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/03-02-data-types-undefined-sam-sepiol1.git
+[submodule "3. Javascript/03/--force"]
+	path = 3. Javascript/03/--force
+	url = https://github.com/Junior-dev-Track/03-02-data-types-undefined-sam-sepiol1.git
