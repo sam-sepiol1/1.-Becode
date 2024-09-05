@@ -10,3 +10,6 @@
 [submodule "3. Javascript/02-05-variables-recap-sam-sepiol1"]
 	path = 3. Javascript/02-05-variables-recap-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/02-05-variables-recap-sam-sepiol1
+[submodule "3. Javascript/clean-code-javascript"]
+	path = 3. Javascript/clean-code-javascript
+	url = https://github.com/ryanmcdermott/clean-code-javascript.git
