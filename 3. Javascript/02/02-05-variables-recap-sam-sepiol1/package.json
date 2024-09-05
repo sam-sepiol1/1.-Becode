@@ -1,0 +1,14 @@
+{
+  "name": "02-02-mastering-javascript-hoisting",
+  "version": "1.0.0",
+  "description": "This assignment aims to deepen your understanding of hoisting in JavaScript.",
+  "main": "hoisting.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.7.0"
+  }
+}
