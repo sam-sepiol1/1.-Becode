@@ -31,3 +31,6 @@
 [submodule "3. Javascript/03/03-06-data-types-null-sam-sepiol1"]
 	path = 3. Javascript/03/03-06-data-types-null-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/03-06-data-types-null-sam-sepiol1.git
+[submodule "3. Javascript/03/03-07-data-types-objects-sam-sepiol1"]
+	path = 3. Javascript/03/03-07-data-types-objects-sam-sepiol1
+	url = https://github.com/Junior-dev-Track/03-07-data-types-objects-sam-sepiol1.git
