@@ -3,7 +3,7 @@
 ## Summary
 
 |          Code | Description                 | Example                             |
-|--------------:|-----------------------------|-------------------------------------|
+| ------------: | --------------------------- | ----------------------------------- |
 |         `let` | Declare a variable          | `let variableName = value;`         |
 |       `const` | Declare a constant          | `const constantName = value;`       |
 | `console.log` | Print a variable in console | `console.log(variableName);`        |

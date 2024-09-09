@@ -3,7 +3,7 @@
 ## Summary
 
 |      Type | Description                                                                                  | Example                                         |
-|----------:|----------------------------------------------------------------------------------------------|-------------------------------------------------|
+| --------: | -------------------------------------------------------------------------------------------- | ----------------------------------------------- |
 |    String | A string is a sequence of characters.                                                        | `let string = "Hello, World!";`                 |
 |    Number | A number is a numerical value. It can be positive, negative, or zero and integers or floats. | `let numberInt = 42;` `let numberFloat = 42.0;` |
 |   Boolean | A boolean is a logical value that can be either true or false.                               | `let boolean = true;`                           |
@@ -115,8 +115,7 @@ console.log(boolean1 === boolean2); // Output: false
 console.log(boolean1 === boolean3); // Output: true
 ```
 
-> [!note]
-> `=` is to assign a value to a variable.
+> [!note] > `=` is to assign a value to a variable.
 > `==` is to compare two values.
 > `===` is to compare two values and check if their types are the same.
 

@@ -3,7 +3,7 @@
 ## Summary
 
 |                         Code | Description                             | Example                                                       |
-|-----------------------------:|-----------------------------------------|---------------------------------------------------------------|
+| ---------------------------: | --------------------------------------- | ------------------------------------------------------------- |
 |                  `new Array` | Create an array                         | `let array = new Array(<size>);`                              |
 |                     `length` | Get the length                          | `let length = array.length;`                                  |
 |                         `[]` | Access an element                       | `let element = array[<index>];`                               |
@@ -379,7 +379,7 @@ console.log(array); // Output: [3, 4, 5, 6, 1, 2]
 Use `array1.filter(x => array2.includes(x))` to find common elements in two arrays.
 
 ```js
-let commonElements = array1.filter(x => array2.includes(x));
+let commonElements = array1.filter((x) => array2.includes(x));
 ```
 
 Example:
@@ -387,7 +387,7 @@ Example:
 ```js
 let array1 = [1, 2, 3];
 let array2 = [2, 3, 4];
-let commonElements = array1.filter(x => array2.includes(x));
+let commonElements = array1.filter((x) => array2.includes(x));
 
 console.log(commonElements); // Output: [2, 3]
 ```
