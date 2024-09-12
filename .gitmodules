@@ -18,22 +18,6 @@
 	path = 3. Javascript/clean-code-javascript
 	url = https://github.com/ryanmcdermott/clean-code-javascript.git
 
-[submodule "3. Javascript/06/06-01-loops-and-iterations-for-sam-sepiol1"]
-	path = 3. Javascript/06/06-01-loops-and-iterations-for-sam-sepiol1
-	url = https://github.com/Junior-dev-Track/06-01-loops-and-iterations-for-sam-sepiol1.git
-
-[submodule "3. Javascript/06/06-01-loops-and-iterations-do-while-sam-sepiol1"]
-	path = 3. Javascript/06/06-01-loops-and-iterations-do-while-sam-sepiol1
-	url = https://github.com/Junior-dev-Track/06-01-loops-and-iterations-do-while-sam-sepiol1.git
-
-[submodule "3. Javascript/06/06-03-loops-and-iterations-while-sam-sepiol1"]
-	path = 3. Javascript/06/06-03-loops-and-iterations-while-sam-sepiol1
-	url = https://github.com/Junior-dev-Track/06-03-loops-and-iterations-while-sam-sepiol1.git
-
-[submodule "3. Javascript/06/06-04-loops-and-iterations-for-of-sam-sepiol1"]
-	path = 3. Javascript/06/06-04-loops-and-iterations-for-of-sam-sepiol1
-	url = https://github.com/Junior-dev-Track/06-04-loops-and-iterations-for-of-sam-sepiol1.git
-
 [submodule "3. Javascript/06/06-05-loops-and-iterations-break-continue-sam-sepiol1"]
 	path = 3. Javascript/06/06-05-loops-and-iterations-break-continue-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/06-05-loops-and-iterations-break-continue-sam-sepiol1.git
