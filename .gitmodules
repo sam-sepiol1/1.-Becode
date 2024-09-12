@@ -58,3 +58,9 @@
 [submodule "3. Javascript/03- Data Types/03-08-data-types-typeof-sam-sepiol1"]
 	path = 3. Javascript/03- Data Types/03-08-data-types-typeof-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/03-08-data-types-typeof-sam-sepiol1.git
+[submodule "3. Javascript/04 - Arrays & JSON/04-01-indexed-collections-arrays-sam-sepiol1"]
+	path = 3. Javascript/04 - Arrays & JSON/04-01-indexed-collections-arrays-sam-sepiol1
+	url = https://github.com/Junior-dev-Track/04-01-indexed-collections-arrays-sam-sepiol1.git
+[submodule "3. Javascript/04 - Arrays & JSON/04-02-structured-data-json-sam-sepiol1"]
+	path = 3. Javascript/04 - Arrays & JSON/04-02-structured-data-json-sam-sepiol1
+	url = https://github.com/Junior-dev-Track/04-02-structured-data-json-sam-sepiol1.git
