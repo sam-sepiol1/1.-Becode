@@ -49,3 +49,24 @@
 [submodule "3. Javascript/06/06-05-loops-and-iterations-break-continue-sam-sepiol1"]
 	path = 3. Javascript/06/06-05-loops-and-iterations-break-continue-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/06-05-loops-and-iterations-break-continue-sam-sepiol1.git
+[submodule "3. Javascript/03- Data Types/03-01-data-types-string-sam-sepiol1"]
+	path = 3. Javascript/03- Data Types/03-01-data-types-string-sam-sepiol1
+	url = https://github.com/Junior-dev-Track/03-01-data-types-string-sam-sepiol1.git
+[submodule "3. Javascript/03- Data Types/03-02-data-types-undefined-sam-sepiol1"]
+	path = 3. Javascript/03- Data Types/03-02-data-types-undefined-sam-sepiol1
+	url = https://github.com/Junior-dev-Track/03-02-data-types-undefined-sam-sepiol1.git
+[submodule "3. Javascript/03- Data Types/03-03-data-types-number-sam-sepiol1"]
+	path = 3. Javascript/03- Data Types/03-03-data-types-number-sam-sepiol1
+	url = https://github.com/Junior-dev-Track/03-03-data-types-number-sam-sepiol1.git
+[submodule "3. Javascript/03- Data Types/03-05-data-types-boolean-sam-sepiol1"]
+	path = 3. Javascript/03- Data Types/03-05-data-types-boolean-sam-sepiol1
+	url = https://github.com/Junior-dev-Track/03-05-data-types-boolean-sam-sepiol1.git
+[submodule "3. Javascript/03- Data Types/03-06-data-types-null-sam-sepiol1"]
+	path = 3. Javascript/03- Data Types/03-06-data-types-null-sam-sepiol1
+	url = https://github.com/Junior-dev-Track/03-06-data-types-null-sam-sepiol1.git
+[submodule "3. Javascript/03- Data Types/03-07-data-types-objects-sam-sepiol1"]
+	path = 3. Javascript/03- Data Types/03-07-data-types-objects-sam-sepiol1
+	url = https://github.com/Junior-dev-Track/03-07-data-types-objects-sam-sepiol1.git
+[submodule "3. Javascript/03- Data Types/03-08-data-types-typeof-sam-sepiol1"]
+	path = 3. Javascript/03- Data Types/03-08-data-types-typeof-sam-sepiol1
+	url = https://github.com/Junior-dev-Track/03-08-data-types-typeof-sam-sepiol1.git
