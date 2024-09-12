@@ -1,14 +1,14 @@
 [submodule "02-02-variable-declarations-sam-sepiol1"]
-	path = 3. Javascript/02/02-02-variable-declarations-sam-sepiol1
+	path = 3. Javascript/02 - Variables/02-02-variable-declarations-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/02-02-variable-declarations-sam-sepiol1
 [submodule "02-03-variables-naming-rules-sam-sepiol1"]
-	path = 3. Javascript/02/02-03-variables-naming-rules-sam-sepiol1
+	path = 3. Javascript/02 - Variables/02-03-variables-naming-rules-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/02-03-variables-naming-rules-sam-sepiol1
 [submodule "02-04-variable-scope-sam-sepiol1"]
-	path = 3. Javascript/02/02-04-variable-scope-sam-sepiol1
+	path = 3. Javascript/02 - Variables/02-04-variable-scope-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/02-04-variable-scope-sam-sepiol1
 [submodule "3. Javascript/02-05-variables-recap-sam-sepiol1"]
-	path = 3. Javascript/02/02-05-variables-recap-sam-sepiol1
+	path = 3. Javascript/02 - Variables/02-05-variables-recap-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/02-05-variables-recap-sam-sepiol1
 [submodule "3. Javascript/clean-code-javascript"]
 	path = 3. Javascript/clean-code-javascript
@@ -16,25 +16,22 @@
 [submodule "3. Javascript/03/03-02-data-types-undefined-sam-sepiol1"]
 	path = 3. Javascript/03/03-02-data-types-undefined-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/03-02-data-types-undefined-sam-sepiol1.git
-[submodule "3. Javascript/03/--force"]
-	path = 3. Javascript/03/--force
-	url = https://github.com/Junior-dev-Track/03-02-data-types-undefined-sam-sepiol1.git
-[submodule "3. Javascript/03/03-01-data-types-string-sam-sepiol1"]
+[submodule "3. Javascript/03 - Data Types/03-01-data-types-string-sam-sepiol1"]
 	path = 3. Javascript/03/03-01-data-types-string-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/03-01-data-types-string-sam-sepiol1.git
-[submodule "3. Javascript/03/03-03-data-types-number-sam-sepiol1"]
+[submodule "3. Javascript/03 - Data Types/03-03-data-types-number-sam-sepiol1"]
 	path = 3. Javascript/03/03-03-data-types-number-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/03-03-data-types-number-sam-sepiol1.git
-[submodule "3. Javascript/03/03-05-data-types-boolean-sam-sepiol1"]
+[submodule "3. Javascript/03 - Data Types/03-05-data-types-boolean-sam-sepiol1"]
 	path = 3. Javascript/03/03-05-data-types-boolean-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/03-05-data-types-boolean-sam-sepiol1.git
-[submodule "3. Javascript/03/03-06-data-types-null-sam-sepiol1"]
+[submodule "3. Javascript/03 - Data Types/03-06-data-types-null-sam-sepiol1"]
 	path = 3. Javascript/03/03-06-data-types-null-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/03-06-data-types-null-sam-sepiol1.git
-[submodule "3. Javascript/03/03-07-data-types-objects-sam-sepiol1"]
+[submodule "3. Javascript/03 - Data Types/03-07-data-types-objects-sam-sepiol1"]
 	path = 3. Javascript/03/03-07-data-types-objects-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/03-07-data-types-objects-sam-sepiol1.git
-[submodule "3. Javascript/03/03-08-data-types-typeof-sam-sepiol1"]
+[submodule "3. Javascript/03 - Data Types/03-08-data-types-typeof-sam-sepiol1"]
 	path = 3. Javascript/03/03-08-data-types-typeof-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/03-08-data-types-typeof-sam-sepiol1.git
 [submodule "3. Javascript/04/04-01-indexed-collections-arrays-sam-sepiol1"]
