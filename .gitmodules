@@ -63,3 +63,6 @@
 [submodule "3. Javascript/06 - Loops/06-01-loops-and-iterations-for-sam-sepiol1"]
 	path = 3. Javascript/06 - Loops/06-01-loops-and-iterations-for-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/06-01-loops-and-iterations-for-sam-sepiol1.git
+[submodule "3. Javascript/07 - Conditionnals/07-01-control-flow-conditional-statements-if-else-sam-sepiol1"]
+	path = 3. Javascript/07 - Conditionnals/07-01-control-flow-conditional-statements-if-else-sam-sepiol1
+	url = https://github.com/Junior-dev-Track/07-01-control-flow-conditional-statements-if-else-sam-sepiol1.git
