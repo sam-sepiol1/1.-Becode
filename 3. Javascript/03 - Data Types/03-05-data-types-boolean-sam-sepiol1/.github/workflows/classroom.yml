@@ -1,0 +1,29 @@
+name: Autograding Tests
+'on':
+- workflow_dispatch
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: boolean
+      id: boolean
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: boolean
+        setup-command: npm install
+        command: npm test
+        timeout: 10
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        BOOLEAN_RESULTS: "${{steps.boolean.outputs.result}}"
+      with:
+        runners: boolean
