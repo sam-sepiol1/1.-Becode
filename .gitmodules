@@ -81,3 +81,6 @@
 [submodule "3. Javascript/Wilson4/CRL-Wilson-4"]
 	path = 3. Javascript/Wilson4/CRL-Wilson-4
 	url = https://github.com/sam-sepiol1/CRL-Wilson-4.git
+[submodule "CRL-Wilson-4"]
+	path = CRL-Wilson-4
+	url = https://github.com/sam-sepiol1/CRL-Wilson-4.git
