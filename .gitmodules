@@ -87,9 +87,9 @@
 [submodule "3. Javascript/10-01-javascript-recap-johnemon-sam-sepiol1"]
 	path = 3. Javascript/10-01-javascript-recap-johnemon-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/10-01-javascript-recap-johnemon-sam-sepiol1.git
-[submodule "04 - SQL/backend-databases-intro-sam-sepiol1"]
-	path = 04 - SQL/backend-databases-intro-sam-sepiol1
+[submodule "4 - SQL/backend-databases-intro-sam-sepiol1"]
+	path = 4 - SQL/backend-databases-intro-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/backend-databases-intro-sam-sepiol1.git
-[submodule "04 - SQL/backend-database-2-sam-sepiol1"]
-	path = 04 - SQL/backend-database-2-sam-sepiol1
+[submodule "4 - SQL/backend-database-2-sam-sepiol1"]
+	path = 4 - SQL/backend-database-2-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/backend-database-2-sam-sepiol1.git
