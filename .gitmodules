@@ -85,7 +85,3 @@
 [submodule "4. SQL/backend-databases-intro-sam-sepiol1"]
 	path = 4. SQL/backend-databases-intro-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/backend-databases-intro-sam-sepiol1.git
-
-[submodule "4. SQL/backend-databases-2-sam-sepiol1"]
-	path = 4. SQL/backend-databases-2-sam-sepiol1
-	url = https://github.com/Junior-dev-Track/backend-databases-2-sam-sepiol1.git
