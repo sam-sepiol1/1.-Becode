@@ -99,16 +99,17 @@ async function display_tasks() {
 	let index = 1;
 	console.log("-------------------------------");
 	tasks.forEach((task) => {
-		console.log(`${index}. ${task.task} | Status: ${task.status}`);
+		console.log(`${index}. ${task.task} | Status: ${task.status} | created on : ${task.created_on} | Updated on : ${task.updated_on}`);
 		index++;
 	});
 }
 
 async function add_task() {
+	const currentDateTime = new Date().toISOString().slice(0, 19).replace('T', ' ');
 	rl.question("Enter your task: ", async (answer) => {
 		try {
 			await new Promise((resolve, reject) => {
-				db.query(`INSERT INTO tasks (task) VALUES (?)`, [answer], (err) => {
+				db.query(`INSERT INTO tasks (task, created_on) VALUES (?, ?)`, [answer, currentDateTime], (err) => {
 					if (err) {
 						reject(new Error(`Error adding task: ${err.message}`));
 					} else {
@@ -156,6 +157,7 @@ async function delete_task() {
 async function task_done() {
 	const tasks = await getAllTasks();
 	await display_tasks();
+	const currentDateTime = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
 	rl.question("Enter the number of the task to mark as done: ", (answer) => {
 		const taskIndex = parseInt(answer) - 1;
@@ -165,7 +167,7 @@ async function task_done() {
 
 		}
 		const taskIdToMark = tasks[taskIndex].id;
-		db.query("UPDATE tasks SET status = ? WHERE id = ?", ["Done", taskIdToMark], (err, result) => {
+		db.query("UPDATE tasks SET status = ?, updated_on = ? WHERE id = ?", ["Done", currentDateTime, taskIdToMark], (err, result) => {
 			if (err) {
 				console.error("Error marking task as done:", err.message);
 			}
@@ -183,6 +185,7 @@ async function task_done() {
 async function task_pending() {
 	const tasks = await getAllTasks();
 	await display_tasks();
+	const currentDateTime = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
 	rl.question("Enter the number of the task to mark as pending: ", (answer) => {
 		const taskIndex = parseInt(answer) - 1;
@@ -191,7 +194,7 @@ async function task_pending() {
 			return task_pending();
 		}
 		const taskIdToMark = tasks[taskIndex].id;
-		db.query("UPDATE tasks SET status = ? WHERE id = ?", ["Pending", taskIdToMark], (err, result) => {
+		db.query("UPDATE tasks SET status = ?, updated_on = ? WHERE id = ?", ["Pending", currentDateTime, taskIdToMark], (err, result) => {
 			if (err) {
 				console.error("Error marking task as Pending:", err.message);
 			}
@@ -210,6 +213,7 @@ async function task_pending() {
 async function task_todo() {
 	const tasks = await getAllTasks();
 	await display_tasks();
+	const currentDateTime = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
 	rl.question("Enter the number of the task to mark as To do: ", async (answer) => {
 		const taskIndex = parseInt(answer) - 1;
@@ -218,7 +222,7 @@ async function task_todo() {
 			return task_todo();
 		}
 		const taskIdToMark = tasks[taskIndex].id;
-		db.query("UPDATE tasks SET status = ? WHERE id = ?", ["To do", taskIdToMark], (err, result) => {
+		db.query("UPDATE tasks SET status = ?, updated_on = ? WHERE id = ?", ["To do", currentDateTime, taskIdToMark], (err, result) => {
 			if (err) {
 				console.error("Error marking task as To do:", err.message);
 			} 
