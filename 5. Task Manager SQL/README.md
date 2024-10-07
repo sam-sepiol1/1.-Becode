@@ -1,6 +1,6 @@
 # Task Manager CLI Application
 
-This is a command-line interface (CLI) application for managing tasks, built with Node.js. The application allows users to view, add, delete, and update tasks in a MySQL database. It provides various options to handle tasks with different statuses like "Done", "Pending", and "To do".
+This is a command-line interface application for managing tasks, built with Node.js. The application allows users to view, add, delete, and update tasks in a MySQL database. It provides various options to handle tasks with different statuses like "Done", "Pending", and "To do".
 
 ## Features
 
@@ -14,20 +14,21 @@ This is a command-line interface (CLI) application for managing tasks, built wit
 
 ## Installation
 
-1. Clone the repository to your local machine:
+**1. Clone the repository to your local machine:**
 
-    ```bash
-    git clone <repository-url>
-    cd Task Manager SQL
-    ```
+```bash
+git clone <repository-url>
+cd Task Manager SQL
+```
 
-2. Install the dependencies:
+**2. Install the dependencies:**
 
-    ```bash
-    npm i
-    ```
+```bash
+npm i
+```
 
-3. Modify the database configuration (`host`, `user`, `password`) as needed in the `database.js` file. The programm will create a database called 'task_manager' by itself when you run it. 
+1. Modify the database configuration (`host`, `user`, `password`) as needed in the `database.js` file. The programm will create a database called 'task_manager' by itself when you run it.
+Be aware that you need a running local server in order to node to create the database. I personnaly use Docker and Stackbricks. 
 
 ## Usage
 
@@ -53,5 +54,5 @@ Welcome to your task manager, Press:
 -------------------------------
 ```
 
-1. Enter the corresponding number for the action you want to perform.
+Enter the corresponding number for the action you want to perform.
 
