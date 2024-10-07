@@ -99,7 +99,7 @@ async function display_tasks() {
 	let index = 1;
 	console.log("-------------------------------");
 	tasks.forEach((task) => {
-		console.log(`${index}. Description: ${task.task}, Status: ${task.status}`);
+		console.log(`${index}. ${task.task} | Status: ${task.status}`);
 		index++;
 	});
 }
@@ -144,6 +144,7 @@ async function delete_task() {
 			}
 			if (result.affectedRows === 0) {
 				console.log("No task found with the given ID.");
+				delete_task();
 			}
 
 			console.log("Task deleted successfully.");
@@ -160,8 +161,8 @@ async function task_done() {
 		const taskIndex = parseInt(answer) - 1;
 		if (isNaN(taskIndex) || taskIndex < 0 || taskIndex >= tasks.length) {
 			console.log("Invalid index. Please select a valid index.");
-			mainMenu();
-			return;
+			return task_done()
+
 		}
 		const taskIdToMark = tasks[taskIndex].id;
 		db.query("UPDATE tasks SET status = ? WHERE id = ?", ["Done", taskIdToMark], (err, result) => {
@@ -170,6 +171,7 @@ async function task_done() {
 			}
 			if (result.affectedRows === 0) {
 				console.log("No task found with the given ID.");
+				return task_done();
 			}
 
 			console.log("Task marked as done.");
@@ -186,8 +188,7 @@ async function task_pending() {
 		const taskIndex = parseInt(answer) - 1;
 		if (isNaN(taskIndex) || taskIndex < 0 || taskIndex >= tasks.length) {
 			console.log("Invalid index. Please select a valid index.");
-			mainMenu();
-			return;
+			return task_pending();
 		}
 		const taskIdToMark = tasks[taskIndex].id;
 		db.query("UPDATE tasks SET status = ? WHERE id = ?", ["Pending", taskIdToMark], (err, result) => {
@@ -196,6 +197,8 @@ async function task_pending() {
 			}
 			if (result.affectedRows === 0) {
 				console.log("No task found with the given Index.");
+				return task_pending();
+
 			}
 
 			console.log("Task marked as Pending.");
@@ -212,8 +215,7 @@ async function task_todo() {
 		const taskIndex = parseInt(answer) - 1;
 		if (isNaN(taskIndex) || taskIndex < 0 || taskIndex >= tasks.length) {
 			console.log("Invalid index. Please select a valid index.");
-			mainMenu();
-			return;
+			return task_todo();
 		}
 		const taskIdToMark = tasks[taskIndex].id;
 		db.query("UPDATE tasks SET status = ? WHERE id = ?", ["To do", taskIdToMark], (err, result) => {
@@ -232,12 +234,12 @@ async function task_todo() {
 
 async function filter_task() {
 	try {
-		const filteredTasks = await getAllTasks();
+		let filteredTasks = await getAllTasks();
 		filteredTasks = filteredTasks.filter(task => task.status === "To do");
 		let index = 1;
 		
 		filteredTasks.forEach((task) => {
-			console.log(`Task ${index} : ${task.task}`);
+			console.log(`${index}. ${task.task}`);
 			index++;
 		});
 	} catch (err) {
