@@ -6,6 +6,8 @@ const rl = readline.createInterface({
 	output: process.stdout,
 });
 
+const db = require('./database');
+
 
 const welcome_message = `
 -------------------------------
@@ -20,7 +22,6 @@ Welcome to your task manager, Press:
 
 const data = require("./data.json") || [];
 
-// main function
 function mainMenu() {
 	console.log(welcome_message);
 
@@ -63,36 +64,35 @@ function handleUserChoice(option) {
   }
 }
 
-
-
-// Display tasks
 function display_tasks() {
-	if (Object.keys(data).length != 0) {
-		for (const task in data) {
-			console.log(`${parseInt(task) + 1} :  ${data[task].task}`);
-		}
-	} else {
-		console.log("No task to do, you're free");
-	}
+	db.query('select*from tasks', (err, result) => { 
+		if (err) throw err;
+		console.log(result);
+	})
 }
 
-// Add a task
 function add_task() {
 	rl.question("Enter your task: ", (answer) => {
-		const new_task = {
-			id: data.length + 1,
-			task: answer,
-			status: false,
-		};
-		data.push(new_task);
+		db.query(`INSERT INTO tasks ${answer}`, (err) => { })
 
-		console.log("Task added successfully!");
-		save_data();
-		mainMenu();
+
+
+
+
+
+		// const new_task = {
+		// 	id: data.length + 1,
+		// 	task: answer,
+		// 	status: false,
+		// };
+		// data.push(new_task);
+
+		// console.log("Task added successfully!");
+		// save_data();
+		// mainMenu();
 	});
 }
 
-// Mark a task as done
 function task_done() {
 	if (Object.keys(data).length != 0) {
 		rl.question("Enter the number of the task : ", (answer) => {
@@ -116,7 +116,6 @@ function task_done() {
 	}
 }
 
-// Delete a task
 function delete_task() {
 	if (Object.keys(data).length != 0) {
 		display_tasks();
@@ -139,7 +138,6 @@ function delete_task() {
 	}
 }
 
-// Filter tasks
 function filter_task() {
 	data.forEach((task) => {
 		if (task.status === false) {
@@ -148,12 +146,11 @@ function filter_task() {
 	});
 	mainMenu();
 }
-// save data to json file.
+
 function save_data() {
 	fs.writeFileSync("./data.json", JSON.stringify(data, null, 2));
 }
 
-// Invalid answer
 function invalid_answer() {
 	console.log("Not a valid answer");
 }
