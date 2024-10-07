@@ -70,8 +70,8 @@
 	path = 3. Javascript/07 - Conditionnals/07-02-control-flow-conditional-statements-switch-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/07-02-control-flow-conditional-statements-switch-sam-sepiol1.git
 [submodule "3. Javascript/8 - Recap - To Do List/08-01-functions-task-manager-sam-sepiol1"]
-	path = 3. Javascript/8 - Recap - To Do List/08-01-functions-task-manager-sam-sepiol1
-	url = https://github.com/Junior-dev-Track/08-01-functions-task-manager-sam-sepiol1.git
+    path = 3. Javascript/8 - Recap - To Do List/08-01-functions-task-manager-sam-sepiol1
+    url = https://github.com/Junior-dev-Track/08-01-functions-task-manager-sam-sepiol1.git
 [submodule "3. Javascript/09 - Classes/09-01-discovering-classes-and-this-sam-sepiol1"]
 	path = 3. Javascript/09 - Classes/09-01-discovering-classes-and-this-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/09-01-discovering-classes-and-this-sam-sepiol1.git
