@@ -23,11 +23,9 @@ async function main() {
 		console.log("-------------------------------");
 		await checkDatabase();
 		console.log("-------------------------------");
-	} 
-	catch (err) {
+	} catch (err) {
 		console.error(err);
-	}
-	finally{ 
+	} finally {
 		mainMenu();
 	}
 }
@@ -48,42 +46,43 @@ async function mainMenu() {
 	console.log(welcome_message);
 
 	rl.question("Your choice: ", (answer) => {
+		answer = parseInt(answer);
 		handleUserChoice(answer);
 	});
 }
 
 async function handleUserChoice(option) {
 	switch (option) {
-		case "1":
+		case 1:
 			await display_tasks();
 			mainMenu();
 			break;
 
-		case "2":
+		case 2:
 			add_task();
 			break;
 
-		case "3":
+		case 3:
 			delete_task();
 			break;
 
-		case "4":
+		case 4:
 			task_done();
 			break;
 
-		case "5":
+		case 5:
 			task_pending();
 			break;
 
-		case "6":
+		case 6:
 			task_todo();
 			break;
 
-		case "7":
+		case 7:
 			await filter_task();
 			break;
 
-		case "8":
+		case 8:
 			process.exit(0);
 			break;
 
@@ -111,8 +110,7 @@ async function add_task() {
 			await new Promise((resolve, reject) => {
 				db.query(`INSERT INTO tasks (task) VALUES (?)`, [answer], (err) => {
 					if (err) {
-						console.error("Error adding task:", err.message);
-						reject(err);
+						reject(new Error(`Error adding task: ${err.message}`));
 					} else {
 						console.log("Task added");
 						resolve();
@@ -131,35 +129,26 @@ async function delete_task() {
 	const tasks = await getAllTasks();
 	await display_tasks();
 
-	rl.question("Enter the number of the task to delete: ", async (answer) => {
+	rl.question("Enter the number of the task to delete: ", (answer) => {
 		const taskIndex = parseInt(answer) - 1;
 		if (isNaN(taskIndex) || taskIndex < 0 || taskIndex >= tasks.length) {
 			console.log("Invalid index. Please select a valid index.");
-			mainMenu();
+			delete_task();
 			return;
 		}
 		const taskIdToDelete = tasks[taskIndex].id;
 
-		try {
-			await new Promise((resolve, reject) => {
-				db.query("DELETE FROM tasks WHERE id = ?", [taskIdToDelete], (err, result) => {
-					if (err) {
-						console.error("Error deleting task:", err.message);
-						reject(err);
-					} else if (result.affectedRows === 0) {
-						console.log("No task found with the given ID.");
-						resolve();
-					} else {
-						console.log("Task deleted successfully.");
-						resolve();
-					}
-				});
-			});
-		} catch (err) {
-			console.error("Failed to delete task:", err.message);
-		} finally {
+		db.query("DELETE FROM tasks WHERE id = ?", [taskIdToDelete], (err, result) => {
+			if (err) {
+				console.error("Error deleting task:", err.message);
+			}
+			if (result.affectedRows === 0) {
+				console.log("No task found with the given ID.");
+			}
+
+			console.log("Task deleted successfully.");
 			mainMenu();
-		}
+		});
 	});
 }
 
@@ -167,7 +156,7 @@ async function task_done() {
 	const tasks = await getAllTasks();
 	await display_tasks();
 
-	rl.question("Enter the number of the task to mark as done: ", async (answer) => {
+	rl.question("Enter the number of the task to mark as done: ", (answer) => {
 		const taskIndex = parseInt(answer) - 1;
 		if (isNaN(taskIndex) || taskIndex < 0 || taskIndex >= tasks.length) {
 			console.log("Invalid index. Please select a valid index.");
@@ -175,26 +164,17 @@ async function task_done() {
 			return;
 		}
 		const taskIdToMark = tasks[taskIndex].id;
-		try {
-			await new Promise((resolve, reject) => {
-				db.query("UPDATE tasks SET status = ? WHERE id = ?", ["Done", taskIdToMark], (err, result) => {
-					if (err) {
-						console.error("Error marking task as done:", err.message);
-						reject(err);
-					} else if (result.affectedRows === 0) {
-						console.log("No task found with the given ID.");
-						resolve();
-					} else {
-						console.log("Task marked as done.");
-						resolve();
-					}
-				});
-			});
-		} catch (err) {
-			console.error("Failed to mark task as done:", err.message);
-		} finally {
+		db.query("UPDATE tasks SET status = ? WHERE id = ?", ["Done", taskIdToMark], (err, result) => {
+			if (err) {
+				console.error("Error marking task as done:", err.message);
+			}
+			if (result.affectedRows === 0) {
+				console.log("No task found with the given ID.");
+			}
+
+			console.log("Task marked as done.");
 			mainMenu();
-		}
+		});
 	});
 }
 
@@ -202,7 +182,7 @@ async function task_pending() {
 	const tasks = await getAllTasks();
 	await display_tasks();
 
-	rl.question("Enter the number of the task to mark as pending : ", async (answer) => {
+	rl.question("Enter the number of the task to mark as pending: ", (answer) => {
 		const taskIndex = parseInt(answer) - 1;
 		if (isNaN(taskIndex) || taskIndex < 0 || taskIndex >= tasks.length) {
 			console.log("Invalid index. Please select a valid index.");
@@ -210,26 +190,17 @@ async function task_pending() {
 			return;
 		}
 		const taskIdToMark = tasks[taskIndex].id;
-		try {
-			await new Promise((resolve, reject) => {
-				db.query("UPDATE tasks SET status = ? WHERE id = ?", ["Pending", taskIdToMark], (err, result) => {
-					if (err) {
-						console.error("Error marking task as Pending :", err.message);
-						reject(err);
-					} else if (result.affectedRows === 0) {
-						console.log("No task found with the given Index.");
-						resolve();
-					} else {
-						console.log("Task marked as Pending.");
-						resolve();
-					}
-				});
-			});
-		} catch (err) {
-			console.error("Failed to mark task as Pending:", err.message);
-		} finally {
+		db.query("UPDATE tasks SET status = ? WHERE id = ?", ["Pending", taskIdToMark], (err, result) => {
+			if (err) {
+				console.error("Error marking task as Pending:", err.message);
+			}
+			if (result.affectedRows === 0) {
+				console.log("No task found with the given Index.");
+			}
+
+			console.log("Task marked as Pending.");
 			mainMenu();
-		}
+		});
 	});
 }
 
@@ -245,43 +216,29 @@ async function task_todo() {
 			return;
 		}
 		const taskIdToMark = tasks[taskIndex].id;
-		try {
-			await new Promise((resolve, reject) => {
-				db.query("UPDATE tasks SET status = ? WHERE id = ?", ["To do", taskIdToMark], (err, result) => {
-					if (err) {
-						console.error("Error marking task as To do :", err.message);
-						reject(err);
-					} else if (result.affectedRows === 0) {
-						console.log("No task found with the given Index.");
-						resolve();
-					} else {
-						console.log("Task marked as To do.");
-						resolve();
-					}
-				});
-			});
-		} catch (err) {
-			console.error("Failed to mark task as To Do :", err.message);
-		} finally {
+		db.query("UPDATE tasks SET status = ? WHERE id = ?", ["To do", taskIdToMark], (err, result) => {
+			if (err) {
+				console.error("Error marking task as To do:", err.message);
+			} 
+			if (result.affectedRows === 0) {
+				console.log("No task found with the given Index.");
+			} 
+			
+			console.log("Task marked as To do.");
 			mainMenu();
-		}
+		});
 	});
 }
 
 async function filter_task() {
 	try {
-		const tasks = await new Promise((resolve, reject) => {
-			db.query("SELECT * FROM tasks WHERE status = 0", (err, result) => {
-				if (err) {
-					reject(err);
-				} else {
-					resolve(result);
-				}
-			});
-		});
-
-		tasks.forEach((task) => {
-			console.log(`Task ID: ${task.id}, Description: ${task.task}`);
+		const filteredTasks = await getAllTasks();
+		filteredTasks = filteredTasks.filter(task => task.status === "To do");
+		let index = 1;
+		
+		filteredTasks.forEach((task) => {
+			console.log(`Task ${index} : ${task.task}`);
+			index++;
 		});
 	} catch (err) {
 		console.error("Error filtering tasks:", err.message);
@@ -291,7 +248,7 @@ async function filter_task() {
 }
 
 function invalid_answer() {
-	console.log("Not a valid answer");
+	return console.log("Not a valid answer");
 }
 
 main();
