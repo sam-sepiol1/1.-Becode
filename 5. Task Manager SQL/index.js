@@ -83,7 +83,7 @@ async function handleUserChoice(option) {
 			break;
 
 		case 8:
-			process.exit(0);
+			exit();
 			break;
 
 		default:
@@ -249,8 +249,12 @@ async function filter_task() {
 	}
 }
 
+function exit() {
+	rl.close();
+	db.end();
+}
+
 function invalid_answer() {
 	return console.log("Not a valid answer");
 }
-
 main();
