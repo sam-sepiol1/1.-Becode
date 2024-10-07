@@ -1,9 +1,11 @@
+require('dotenv').config();
+
 
 const mysql = require('mysql');
 const initialConnection = mysql.createConnection({
-  host: "localhost",
-  user: "BigFudge",
-  password: "DatabaseManager2024"
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
 });
 
 function checkDatabase() {
@@ -55,9 +57,9 @@ function checkDatabase() {
 }
 
 const pool = mysql.createPool({
-  host: "localhost",
-  user: "BigFudge",
-  password: "DatabaseManager2024",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
   database: "task_manager",
   connectionLimit: 10,
 });
