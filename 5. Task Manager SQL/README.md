@@ -18,16 +18,16 @@ This is a command-line interface (CLI) application for managing tasks, built wit
 
     ```bash
     git clone <repository-url>
-    cd task-manager-cli
+    cd Task Manager SQL
     ```
 
 2. Install the dependencies:
 
     ```bash
-    npm install
+    npm i
     ```
 
-3. Modify the database configuration (`host`, `user`, `password`) as needed in the `database.js` file. The programm will create a database called 'task_manager' by itself when you run it.
+3. Modify the database configuration (`host`, `user`, `password`) as needed in the `database.js` file. The programm will create a database called 'task_manager' by itself when you run it. 
 
 ## Usage
 
