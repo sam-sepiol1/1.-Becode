@@ -18,7 +18,7 @@ This is a command-line interface application for managing tasks, built with Node
 
 ```bash
 git clone <repository-url>
-cd Task Manager SQL
+cd into the folder
 ```
 
 **2. Install the dependencies:**
