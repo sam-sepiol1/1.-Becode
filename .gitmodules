@@ -69,16 +69,12 @@
 [submodule "3. Javascript/07 - Conditionnals/07-02-control-flow-conditional-statements-switch-sam-sepiol1"]
 	path = 3. Javascript/07 - Conditionnals/07-02-control-flow-conditional-statements-switch-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/07-02-control-flow-conditional-statements-switch-sam-sepiol1.git
-[submodule "3. Javascript/08 - Recap - To Do List/08-01-functions-task-manager-sam-sepiol1"]
-    path = 3. Javascript/08 - Recap - To Do List/08-01-functions-task-manager-sam-sepiol1
-    url = https://github.com/Junior-dev-Track/08-01-functions-task-manager-sam-sepiol1.git
 [submodule "3. Javascript/09 - Classes/09-01-discovering-classes-and-this-sam-sepiol1"]
 	path = 3. Javascript/09 - Classes/09-01-discovering-classes-and-this-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/09-01-discovering-classes-and-this-sam-sepiol1.git
 [submodule "3. Javascript/09 - Classes/09-02-practicing-classes-and-this-sam-sepiol1"]
 	path = 3. Javascript/09 - Classes/09-02-practicing-classes-and-this-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/09-02-practicing-classes-and-this-sam-sepiol1.git
-
 [submodule "3. Javascript/10-01-javascript-recap-johnemon-sam-sepiol1"]
 	path = 3. Javascript/10-01-javascript-recap-johnemon-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/10-01-javascript-recap-johnemon-sam-sepiol1.git
@@ -88,3 +84,6 @@
 [submodule "4. SQL/backend-database-2-sam-sepiol1"]
 	path = 4. SQL/backend-database-2-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/backend-database-2-sam-sepiol1.git
+[submodule "3. Javascript/08 - Task Manager/08-01-functions-task-manager-sam-sepiol1"]
+	path = 3. Javascript/08 - Task Manager/08-01-functions-task-manager-sam-sepiol1
+	url = https://github.com/Junior-dev-Track/08-01-functions-task-manager-sam-sepiol1.git
