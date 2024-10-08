@@ -8,14 +8,15 @@ const { checkDatabase, db } = require("./database");
 const welcome_message = `
 -------------------------------
 Welcome to your task manager, Press:
-1. to see all your tasks,
-2. to add a task,
-3. to delete a task,
-4. to mark a task as done,
-5. to mark a task as pending,
-6. to mark a task as to do,
-7. to show tasks left to do,
-8. to Exit the task manager
+1. to see all your tasks.
+2. to add a task.
+3. to delete a task.
+4. to mark a task as done.
+5. to mark a task as pending.
+6. to mark a task as to do.
+7. to filter tasks.
+8. to search a task with a keyword.
+9. to exit the task manager.
 -------------------------------`;
 
 async function main() {
@@ -83,9 +84,11 @@ async function handleUserChoice(option) {
 			break;
 
 		case 8:
+			search();
+			break;
+		case 9:
 			exit();
 			break;
-
 		default:
 			invalid_answer();
 			mainMenu();
@@ -105,7 +108,7 @@ async function display_tasks() {
 }
 
 async function add_task() {
-	const currentDateTime = new Date().toISOString().slice(0, 19).replace('T', ' ');
+	const currentDateTime = new Date().toISOString().slice(0, 19).replace("T", " ");
 	rl.question("Enter your task: ", async (answer) => {
 		try {
 			await new Promise((resolve, reject) => {
@@ -157,14 +160,13 @@ async function delete_task() {
 async function task_done() {
 	const tasks = await getAllTasks();
 	await display_tasks();
-	const currentDateTime = new Date().toISOString().slice(0, 19).replace('T', ' ');
+	const currentDateTime = new Date().toISOString().slice(0, 19).replace("T", " ");
 
 	rl.question("Enter the number of the task to mark as done: ", (answer) => {
 		const taskIndex = parseInt(answer) - 1;
 		if (isNaN(taskIndex) || taskIndex < 0 || taskIndex >= tasks.length) {
 			console.log("Invalid index. Please select a valid index.");
-			return task_done()
-
+			return task_done();
 		}
 		const taskIdToMark = tasks[taskIndex].id;
 		db.query("UPDATE tasks SET status = ?, updated_on = ? WHERE id = ?", ["Done", currentDateTime, taskIdToMark], (err, result) => {
@@ -185,7 +187,7 @@ async function task_done() {
 async function task_pending() {
 	const tasks = await getAllTasks();
 	await display_tasks();
-	const currentDateTime = new Date().toISOString().slice(0, 19).replace('T', ' ');
+	const currentDateTime = new Date().toISOString().slice(0, 19).replace("T", " ");
 
 	rl.question("Enter the number of the task to mark as pending: ", (answer) => {
 		const taskIndex = parseInt(answer) - 1;
@@ -201,7 +203,6 @@ async function task_pending() {
 			if (result.affectedRows === 0) {
 				console.log("No task found with the given Index.");
 				return task_pending();
-
 			}
 
 			console.log("Task marked as Pending.");
@@ -213,7 +214,7 @@ async function task_pending() {
 async function task_todo() {
 	const tasks = await getAllTasks();
 	await display_tasks();
-	const currentDateTime = new Date().toISOString().slice(0, 19).replace('T', ' ');
+	const currentDateTime = new Date().toISOString().slice(0, 19).replace("T", " ");
 
 	rl.question("Enter the number of the task to mark as To do: ", async (answer) => {
 		const taskIndex = parseInt(answer) - 1;
@@ -225,11 +226,11 @@ async function task_todo() {
 		db.query("UPDATE tasks SET status = ?, updated_on = ? WHERE id = ?", ["To do", currentDateTime, taskIdToMark], (err, result) => {
 			if (err) {
 				console.error("Error marking task as To do:", err.message);
-			} 
+			}
 			if (result.affectedRows === 0) {
 				console.log("No task found with the given Index.");
-			} 
-			
+			}
+
 			console.log("Task marked as To do.");
 			mainMenu();
 		});
@@ -237,11 +238,40 @@ async function task_todo() {
 }
 
 async function filter_task() {
+	let message = `
+-------------------------------
+Select your filter.
+1. To do
+2. Pending
+3. Done
+-------------------------------
+Your choice : `;
+
 	try {
 		let filteredTasks = await getAllTasks();
-		filteredTasks = filteredTasks.filter(task => task.status === "To do");
+
+		const filter = await new Promise((resolve) => {
+			rl.question(message, (answer) => {
+				answer = parseInt(answer);
+				switch (answer) {
+					case 1:
+						resolve("To do");
+						break;
+					case 2:
+						resolve("Pending");
+					case 3:
+						resolve("Done");
+
+					default:
+						break;
+				}
+			});
+		});
+
+		filteredTasks = filteredTasks.filter((task) => task.status === filter);
 		let index = 1;
-		
+
+		console.log("-------------------------------");
 		filteredTasks.forEach((task) => {
 			console.log(`${index}. ${task.task}`);
 			index++;
@@ -251,6 +281,33 @@ async function filter_task() {
 	} finally {
 		mainMenu();
 	}
+}
+
+async function search() {
+	rl.question("Enter a keyword to search for: ", (keyword) => {
+		const searchQuery = `%${keyword}%`;
+
+		db.query("SELECT * FROM tasks WHERE task LIKE ?", [searchQuery], (err, result) => {
+			if (err) {
+				console.error("Error searching tasks:", err.message);
+				return mainMenu();
+			}
+			if (result.length === 0) {
+				console.log("No tasks found with the given keyword.");
+				return mainMenu();
+			}
+
+			let index = 1;
+			console.log("-------------------------------");
+
+			result.forEach((task) => {
+				console.log(`${index}. ${task.task} | Status: ${task.status}`);
+				index++;
+			});
+
+			mainMenu();
+		});
+	});
 }
 
 function exit() {
