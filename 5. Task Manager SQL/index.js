@@ -16,8 +16,15 @@ Welcome to your task manager, Press:
 6. to mark a task as to do.
 7. to filter tasks.
 8. to search a task with a keyword.
-9. to exit the task manager.
+9. to display tasks by status.
+10. to exit the task manager.
 -------------------------------`;
+
+const noTasks = `
+-------------------------------
+No tasks to display
+-------------------------------
+`;
 
 async function main() {
 	try {
@@ -86,9 +93,15 @@ async function handleUserChoice(option) {
 		case 8:
 			search();
 			break;
+
 		case 9:
+			groupBy();
+			break;
+
+		case 10:
 			exit();
 			break;
+
 		default:
 			invalid_answer();
 			mainMenu();
@@ -99,10 +112,14 @@ async function handleUserChoice(option) {
 async function display_tasks() {
 	const tasks = await getAllTasks();
 
+	if (tasks.length === 0) {
+		return console.log(noTasks);
+	}
+
 	let index = 1;
 	console.log("-------------------------------");
 	tasks.forEach((task) => {
-		console.log(`${index}. ${task.task} | Status: ${task.status} | created on : ${task.created_on} | Updated on : ${task.updated_on}`);
+		console.log(`${index}. ${task.task} | Status: ${task.status}|`);
 		index++;
 	});
 }
@@ -137,8 +154,7 @@ async function delete_task() {
 		const taskIndex = parseInt(answer) - 1;
 		if (isNaN(taskIndex) || taskIndex < 0 || taskIndex >= tasks.length) {
 			console.log("Invalid index. Please select a valid index.");
-			delete_task();
-			return;
+			return mainMenu();
 		}
 		const taskIdToDelete = tasks[taskIndex].id;
 
@@ -148,11 +164,11 @@ async function delete_task() {
 			}
 			if (result.affectedRows === 0) {
 				console.log("No task found with the given ID.");
-				delete_task();
+				return delete_task();
 			}
 
 			console.log("Task deleted successfully.");
-			mainMenu();
+			return mainMenu();
 		});
 	});
 }
@@ -169,7 +185,7 @@ async function task_done() {
 			return task_done();
 		}
 		const taskIdToMark = tasks[taskIndex].id;
-		db.query("UPDATE tasks SET status = ?, updated_on = ? WHERE id = ?", ["Done", currentDateTime, taskIdToMark], (err, result) => {
+		db.query("UPDATE tasks SET status = ?, updated = ? WHERE id = ?", ["Done", currentDateTime, taskIdToMark], (err, result) => {
 			if (err) {
 				console.error("Error marking task as done:", err.message);
 			}
@@ -179,7 +195,7 @@ async function task_done() {
 			}
 
 			console.log("Task marked as done.");
-			mainMenu();
+			return mainMenu();
 		});
 	});
 }
@@ -196,7 +212,7 @@ async function task_pending() {
 			return task_pending();
 		}
 		const taskIdToMark = tasks[taskIndex].id;
-		db.query("UPDATE tasks SET status = ?, updated_on = ? WHERE id = ?", ["Pending", currentDateTime, taskIdToMark], (err, result) => {
+		db.query("UPDATE tasks SET status = ?, updated = ? WHERE id = ?", ["Pending", currentDateTime, taskIdToMark], (err, result) => {
 			if (err) {
 				console.error("Error marking task as Pending:", err.message);
 			}
@@ -206,7 +222,7 @@ async function task_pending() {
 			}
 
 			console.log("Task marked as Pending.");
-			mainMenu();
+			return mainMenu();
 		});
 	});
 }
@@ -223,16 +239,18 @@ async function task_todo() {
 			return task_todo();
 		}
 		const taskIdToMark = tasks[taskIndex].id;
-		db.query("UPDATE tasks SET status = ?, updated_on = ? WHERE id = ?", ["To do", currentDateTime, taskIdToMark], (err, result) => {
+		db.query("UPDATE tasks SET status = ?, updated = ? WHERE id = ?", ["To do", currentDateTime, taskIdToMark], (err, result) => {
 			if (err) {
 				console.error("Error marking task as To do:", err.message);
+				return mainMenu();
 			}
 			if (result.affectedRows === 0) {
 				console.log("No task found with the given Index.");
+				return mainMenu();
 			}
 
 			console.log("Task marked as To do.");
-			mainMenu();
+			return mainMenu();
 		});
 	});
 }
@@ -249,7 +267,9 @@ Your choice : `;
 
 	try {
 		let filteredTasks = await getAllTasks();
-
+		if (filteredTasks === 0) {
+			return console.log(noTasks);
+		}
 		const filter = await new Promise((resolve) => {
 			rl.question(message, (answer) => {
 				answer = parseInt(answer);
@@ -261,7 +281,6 @@ Your choice : `;
 						resolve("Pending");
 					case 3:
 						resolve("Done");
-
 					default:
 						break;
 				}
@@ -278,6 +297,7 @@ Your choice : `;
 		});
 	} catch (err) {
 		console.error("Error filtering tasks:", err.message);
+		return mainMenu();
 	} finally {
 		mainMenu();
 	}
@@ -305,8 +325,30 @@ async function search() {
 				index++;
 			});
 
-			mainMenu();
+			return mainMenu();
 		});
+	});
+}
+
+async function groupBy() {
+	db.query('SELECT * FROM tasks ORDER BY status;', (err, result) => {
+		if (err) {
+			console.error("Error grouping tasks:", err.message);
+			return mainMenu();
+		}
+
+		let currentStatus = '';
+
+		result.forEach((task) => {
+			if (task.status !== currentStatus) {
+				currentStatus = task.status;
+				console.log(`\nStatus: ${currentStatus}`);
+				console.log('-------------------------------');
+				
+			}
+			console.log(`- ${task.task}`);
+		});
+		mainMenu();
 	});
 }
 
@@ -318,4 +360,5 @@ function exit() {
 function invalid_answer() {
 	return console.log("Not a valid answer");
 }
+
 main();

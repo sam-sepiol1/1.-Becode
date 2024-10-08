@@ -10,7 +10,10 @@ This is a command-line interface application for managing tasks, built with Node
 4. **Mark a Task as Done:** Marks a selected task as "Done".
 5. **Mark a Task as Pending:** Marks a selected task as "Pending".
 6. **Mark a Task as To Do:** Marks a selected task as "To do".
-7. **Show Tasks Left to Do:** Displays a filtered list of tasks that are not yet completed.
+7. **Filter Tasks:** Filter tasks in function of status.
+8. **Search Tasks :** Search tasks that contains a keyword.
+9. **Display Tasks by Status :** Display each tasks sorted by status
+10. **Exit :** Exit the app
 
 ## Installation
 
