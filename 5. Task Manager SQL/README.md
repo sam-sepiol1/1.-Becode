@@ -12,8 +12,8 @@ This is a command-line interface application for managing tasks, built with Node
 6. **Mark a Task as To Do:** Marks a selected task as "To do".
 7. **Filter Tasks:** Filter tasks in function of status.
 8. **Search Tasks :** Search tasks that contains a keyword.
-9. **Display Tasks by Status :** Display each tasks sorted by status
-10. **Exit :** Exit the app
+9. **Display Tasks by Status :** Display each tasks sorted by status.
+10. **Exit :** Exit the app.
 
 ## Installation
 
@@ -46,14 +46,16 @@ node index.js
 ```
 -------------------------------
 Welcome to your task manager, Press:
-1. to see all your tasks,
-2. to add a task,
-3. to delete a task,
-4. to mark a task as done,
-5. to mark a task as pending,
-6. to mark a task as to do,
-7. to show tasks left to do,
-8. to Exit the task manager
+1. to see all your tasks.
+2. to add a task.
+3. to delete a task.
+4. to mark a task as done.
+5. to mark a task as pending.
+6. to mark a task as to do.
+7. to filter tasks.
+8. to search a task with a keyword.
+9. to display tasks by status.
+10. to exit the task manager.
 -------------------------------
 ```
 
