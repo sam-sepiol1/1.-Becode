@@ -152,6 +152,7 @@ async function delete_task() {
 
 	rl.question("Enter the number of the task to delete: ", (answer) => {
 		const taskIndex = parseInt(answer) - 1;
+
 		if (isNaN(taskIndex) || taskIndex < 0 || taskIndex >= tasks.length) {
 			console.log("Invalid index. Please select a valid index.");
 			return mainMenu();
@@ -161,10 +162,11 @@ async function delete_task() {
 		db.query("DELETE FROM tasks WHERE id = ?", [taskIdToDelete], (err, result) => {
 			if (err) {
 				console.error("Error deleting task:", err.message);
+				return mainMenu();
 			}
 			if (result.affectedRows === 0) {
 				console.log("No task found with the given ID.");
-				return delete_task();
+				return mainMenu();
 			}
 
 			console.log("Task deleted successfully.");
@@ -331,20 +333,19 @@ async function search() {
 }
 
 async function groupBy() {
-	db.query('SELECT * FROM tasks ORDER BY status;', (err, result) => {
+	db.query("SELECT * FROM tasks ORDER BY status;", (err, result) => {
 		if (err) {
 			console.error("Error grouping tasks:", err.message);
 			return mainMenu();
 		}
 
-		let currentStatus = '';
+		let currentStatus = "";
 
 		result.forEach((task) => {
 			if (task.status !== currentStatus) {
 				currentStatus = task.status;
 				console.log(`\nStatus: ${currentStatus}`);
-				console.log('-------------------------------');
-				
+				console.log("-------------------------------");
 			}
 			console.log(`- ${task.task}`);
 		});
