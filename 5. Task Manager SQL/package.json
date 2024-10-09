@@ -6,6 +6,7 @@
   "author": "Sam Sepiol",
   "license": "ISC",
   "dependencies": {
+    "colors": "^1.4.0",
     "dotenv": "^16.4.5",
     "fs": "^0.0.1-security",
     "mysql": "^2.18.1",

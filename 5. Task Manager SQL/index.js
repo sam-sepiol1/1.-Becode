@@ -4,10 +4,12 @@ const rl = readline.createInterface({
 	output: process.stdout,
 });
 const { checkDatabase, db } = require("./database");
+const colors = require('colors');
 
 const welcome_message = `
--------------------------------
-Welcome to your task manager, Press:
+Welcome to your task manager, Press:`.underline.bold.blue +
+`
+
 1. to see all your tasks.
 2. to add a task.
 3. to delete a task.
@@ -18,7 +20,7 @@ Welcome to your task manager, Press:
 8. to search a task with a keyword.
 9. to display tasks by status.
 10. to exit the task manager.
--------------------------------`;
+`;
 
 const noTasks = `
 -------------------------------
@@ -120,6 +122,7 @@ async function handleUserChoice(option) {
 }
 
 async function display_tasks() {
+	clearConsole();
 	const tasks = await getAllTasks();
 
 	if (tasks.length === 0) {
@@ -127,11 +130,12 @@ async function display_tasks() {
 	}
 
 	let index = 1;
-	console.log("-------------------------------");
 	tasks.forEach((task) => {
+		console.log("-------------------------------");
 		console.log(`${index}. ${task.task} | Status: ${task.status}|`);
 		index++;
 	});
+	console.log("-------------------------------");
 }
 
 async function add_task() {
@@ -164,7 +168,7 @@ async function delete_task() {
 		const taskIndex = parseInt(answer) - 1;
 
 		if (isNaN(taskIndex) || taskIndex < 0 || taskIndex >= tasks.length) {
-			console.log("Invalid index. Please select a valid index.");
+			console.error("Invalid index. Please select a valid index.");
 			return mainMenu();
 		}
 		const taskIdToDelete = tasks[taskIndex].id;
@@ -175,10 +179,11 @@ async function delete_task() {
 				return mainMenu();
 			}
 			if (result.affectedRows === 0) {
-				console.log("No task found with the given ID.");
+				console.error("No task found with the given ID.");
 				return mainMenu();
 			}
 
+			clearConsole();
 			console.log("Task deleted successfully.");
 			return mainMenu();
 		});
@@ -193,7 +198,7 @@ async function task_done() {
 	rl.question("Enter the number of the task to mark as done: ", (answer) => {
 		const taskIndex = parseInt(answer) - 1;
 		if (isNaN(taskIndex) || taskIndex < 0 || taskIndex >= tasks.length) {
-			console.log("Invalid index. Please select a valid index.");
+			console.error("Invalid index. Please select a valid index.");
 			return task_done();
 		}
 		const taskIdToMark = tasks[taskIndex].id;
@@ -202,10 +207,10 @@ async function task_done() {
 				console.error("Error marking task as done:", err.message);
 			}
 			if (result.affectedRows === 0) {
-				console.log("No task found with the given ID.");
+				console.error("No task found with the given ID.");
 				return task_done();
 			}
-
+			clearConsole();
 			console.log("Task marked as done.");
 			return mainMenu();
 		});
@@ -220,7 +225,7 @@ async function task_pending() {
 	rl.question("Enter the number of the task to mark as pending: ", (answer) => {
 		const taskIndex = parseInt(answer) - 1;
 		if (isNaN(taskIndex) || taskIndex < 0 || taskIndex >= tasks.length) {
-			console.log("Invalid index. Please select a valid index.");
+			console.error("Invalid index. Please select a valid index.");
 			return task_pending();
 		}
 		const taskIdToMark = tasks[taskIndex].id;
@@ -229,10 +234,11 @@ async function task_pending() {
 				console.error("Error marking task as Pending:", err.message);
 			}
 			if (result.affectedRows === 0) {
-				console.log("No task found with the given Index.");
+				console.error("No task found with the given Index.");
 				return task_pending();
 			}
 
+			clearConsole();
 			console.log("Task marked as Pending.");
 			return mainMenu();
 		});
@@ -247,7 +253,7 @@ async function task_todo() {
 	rl.question("Enter the number of the task to mark as To do: ", async (answer) => {
 		const taskIndex = parseInt(answer) - 1;
 		if (isNaN(taskIndex) || taskIndex < 0 || taskIndex >= tasks.length) {
-			console.log("Invalid index. Please select a valid index.");
+			console.error("Invalid index. Please select a valid index.");
 			return task_todo();
 		}
 		const taskIdToMark = tasks[taskIndex].id;
@@ -257,10 +263,11 @@ async function task_todo() {
 				return mainMenu();
 			}
 			if (result.affectedRows === 0) {
-				console.log("No task found with the given Index.");
+				console.error("No task found with the given Index.");
 				return mainMenu();
 			}
 
+			clearConsole();
 			console.log("Task marked as To do.");
 			return mainMenu();
 		});
@@ -280,6 +287,7 @@ Your choice : `;
 	try {
 		let filteredTasks = await getAllTasks();
 		if (filteredTasks === 0) {
+			clearConsole();
 			return console.log(noTasks);
 		}
 		const filter = await new Promise((resolve) => {
@@ -300,8 +308,13 @@ Your choice : `;
 		});
 
 		filteredTasks = filteredTasks.filter((task) => task.status === filter);
+		if (filteredTasks.length === 0) {
+			clearConsole();
+			return console.error('No task with that status');
+		}
+		
+		
 		let index = 1;
-
 		console.log("-------------------------------");
 		filteredTasks.forEach((task) => {
 			console.log(`${index}. ${task.task}`);
@@ -321,11 +334,13 @@ async function search() {
 
 		db.query("SELECT * FROM tasks WHERE task LIKE ?", [searchQuery], (err, result) => {
 			if (err) {
+				clearConsole();
 				console.error("Error searching tasks:", err.message);
 				return mainMenu();
 			}
 			if (result.length === 0) {
-				console.log("No tasks found with the given keyword.");
+				clearConsole();
+				console.error("No tasks found with the given keyword.");
 				return mainMenu();
 			}
 
@@ -336,15 +351,17 @@ async function search() {
 				console.log(`${index}. ${task.task} | Status: ${task.status}`);
 				index++;
 			});
-
+			clearConsole();
 			return mainMenu();
 		});
 	});
 }
 
 async function groupBy() {
+	clearConsole();
 	db.query("SELECT * FROM tasks ORDER BY status;", (err, result) => {
 		if (err) {
+			clearConsole();
 			console.error("Error grouping tasks:", err.message);
 			return mainMenu();
 		}
@@ -365,7 +382,7 @@ async function groupBy() {
 
 
 function clearConsole() {
-	return console.clear();
+	process.stdout.write('\x1Bc')
 }
 function exit() {
 	rl.close();
@@ -373,7 +390,7 @@ function exit() {
 }
 
 function invalid_answer() {
-	return console.log("Not a valid answer");
+	return console.error("Not a valid answer");
 }
 
 main();

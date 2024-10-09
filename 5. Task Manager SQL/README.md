@@ -30,7 +30,9 @@ cd into the folder
 npm i
 ```
 
-1. Modify the database configuration (`host`, `user`, `password`) as needed in the `database.js` file. The programm will create a database called 'task_manager' by itself when you run it.
+**3 : Configuration.** 
+
+Modify the database configuration (`host`, `user`, `password`) as needed in the `database.js` file. The programm will create a database called 'task_manager' by itself when you run it.
 Be aware that you need a running local server in order to node to create the database. I personnaly use Docker and Stackbricks. 
 
 ## Usage
