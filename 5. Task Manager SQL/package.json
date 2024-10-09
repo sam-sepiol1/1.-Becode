@@ -1,13 +1,10 @@
 {
-  "name": "08-01-task-manager",
-  "version": "1.0.0",
-  "description": "This assignment aims to reinforce the understanding and usage of the 'if...else' statements in JavaScript.",
+  "name": "task-manager",
+  "version": "1.2.0",
+  "description": "CLI app that creates DB and allows to manage tasks.",
   "main": "08-01-task-manager.js",
-  "scripts": {
-    "start": "node 08-01-task-manager.js",
-    "test": "jest"
-  },
-  "author": "",
+
+  "author": "Sam Sepiol",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
