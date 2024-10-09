@@ -3,7 +3,6 @@
   "version": "1.2.0",
   "description": "CLI app that creates DB and allows to manage tasks.",
   "main": "08-01-task-manager.js",
-
   "author": "Sam Sepiol",
   "license": "ISC",
   "dependencies": {
