@@ -62,43 +62,53 @@ async function mainMenu() {
 async function handleUserChoice(option) {
 	switch (option) {
 		case 1:
+			clearConsole()
 			await display_tasks();
 			mainMenu();
 			break;
-
-		case 2:
+			
+			case 2:
+			clearConsole()
 			add_task();
 			break;
-
-		case 3:
+			
+			case 3:
+			clearConsole()
 			delete_task();
 			break;
-
-		case 4:
+			
+			case 4:
+			clearConsole()
 			task_done();
 			break;
-
-		case 5:
+			
+			case 5:
+			clearConsole()
 			task_pending();
 			break;
-
-		case 6:
+			
+			case 6:
+			clearConsole()
 			task_todo();
 			break;
-
-		case 7:
+			
+			case 7:
+			clearConsole()
 			await filter_task();
 			break;
-
-		case 8:
+			
+			case 8:
+			clearConsole()
 			search();
 			break;
-
-		case 9:
+			
+			case 9:
+			clearConsole()
 			groupBy();
 			break;
-
-		case 10:
+			
+			case 10:
+			clearConsole()
 			exit();
 			break;
 
@@ -353,6 +363,10 @@ async function groupBy() {
 	});
 }
 
+
+function clearConsole() {
+	return console.clear();
+}
 function exit() {
 	rl.close();
 	db.end();
