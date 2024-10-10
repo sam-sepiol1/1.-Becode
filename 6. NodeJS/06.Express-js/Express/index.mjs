@@ -1,6 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
-import data from './recipes.json' assert { type: 'json' };
+import fs from 'fs';
+
+const data = JSON.parse(fs.readFileSync('./recipes.json', 'utf-8'));
 
 const PORT = 3000;
 const app = express();

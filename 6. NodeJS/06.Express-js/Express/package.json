@@ -2,6 +2,7 @@
   "name": "express",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "dependencies": {
     "accepts": "^1.3.8",
     "array-flatten": "^1.1.1",
@@ -69,7 +70,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.mjs"
   },
   "author": "",
   "license": "ISC",
