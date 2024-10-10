@@ -380,7 +380,6 @@ async function groupBy() {
 	});
 }
 
-
 function clearConsole() {
 	process.stdout.write('\x1Bc')
 }
