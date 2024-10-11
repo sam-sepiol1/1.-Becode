@@ -87,9 +87,3 @@
 [submodule "3. Javascript/08 - Task Manager/08-01-functions-task-manager-sam-sepiol1"]
 	path = 3. Javascript/08 - Task Manager/08-01-functions-task-manager-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/08-01-functions-task-manager-sam-sepiol1.git
-[submodule "6. NodeJS/nodejs-part1-sam-sepiol1"]
-	path = 6. NodeJS/nodejs-part1-sam-sepiol1
-	url = https://github.com/Junior-dev-Track/nodejs-part1-sam-sepiol1.git
-[submodule "6. NodeJS/--force"]
-	path = 6. NodeJS/--force
-	url = https://github.com/Junior-dev-Track/nodejs-part1-sam-sepiol1.git
