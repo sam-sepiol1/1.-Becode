@@ -25,7 +25,7 @@ app.get("/recipe/:id", (req, res)  => {
 
 app.get("/:name", (req, res) => {
     const name = req.params.name.toLowerCase();
-    const recipe = data.find((recipe) => recipe.name.toLowerCase().replace(" ", '') === name);
+    const recipe = data.find((recipe) => recipe.name.toLowerCase().replaceAll(" ", '') === name);
 
     if (recipe) {
         res.json(recipe);
