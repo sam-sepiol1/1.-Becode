@@ -20,9 +20,9 @@ function processUserData(user) {
 
 // Consistent Indentation
 // Bad
-function add(a, b) 
+function add(a, b      ) 
     {
-return a + b;
+return a    + b;
 }
 
 // Good
