@@ -2,8 +2,23 @@
 
 file.txt
 
+
 # Ignore a folder 
 
 /folder name/
+
+
+# Match zero or more characters 
+
+*.log
+
+
+# Match 1 character 
+
+file?.txt
+
+# Match directory and subdirectory
+
+**folder/file.txt
 
 
