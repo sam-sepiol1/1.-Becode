@@ -90,3 +90,6 @@
 [submodule "6. NodeJS/nodejs-part1-sam-sepiol1"]
 	path = 6. NodeJS/nodejs-part1-sam-sepiol1
 	url = https://github.com/Junior-dev-Track/nodejs-part1-sam-sepiol1.git
+[submodule "7. Lokker Room/lokkeroom"]
+	path = 7. Lokker Room/lokkeroom
+	url = https://github.com/MaTor97/lokkeroom.git
