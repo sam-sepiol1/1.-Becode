@@ -9,13 +9,29 @@ file.txt
 
 
 # Match zero or more characters 
+# Long and boring example
+1.log
+2.log
+3.log
+4.log
+5.log
+
+# Fast example
 
 *.log
 
 
 # Match 1 character 
+# Long and boring example
+file1.txt
+file2.txt
+file3.txt
+file4.txt
+file5.txt
 
+# Fast example
 file?.txt
+
 
 # Match directory and subdirectory
 
