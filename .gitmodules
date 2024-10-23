@@ -93,3 +93,6 @@
 [submodule "7. Lokker Room/lokkeroom"]
 	path = 7. Lokker Room/lokkeroom
 	url = https://github.com/MaTor97/lokkeroom.git
+[submodule "8. HTML/html-css-intro-sam-sepiol1"]
+	path = 8. HTML/html-css-intro-sam-sepiol1
+	url = https://github.com/Junior-dev-Track/html-css-intro-sam-sepiol1.git
